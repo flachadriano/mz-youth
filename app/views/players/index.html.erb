@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Session</th>
+      <th>Sell</th>
+      <th>Fsession one</th>
+      <th>Session two</th>
+      <th>Session three</th>
+      <th>Session four</th>
+      <th>Session five</th>
+      <th>Session six</th>
+      <th>Session seven</th>
+      <th>Session eight</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.session %></td>
+        <td><%= player.sell %></td>
+        <td><%= player.fsession_one %></td>
+        <td><%= player.session_two %></td>
+        <td><%= player.session_three %></td>
+        <td><%= player.session_four %></td>
+        <td><%= player.session_five %></td>
+        <td><%= player.session_six %></td>
+        <td><%= player.session_seven %></td>
+        <td><%= player.session_eight %></td>
+        <td><%= link_to 'Show', player %></td>
+        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  session: 1
+  sell: false
+  fsession_one: false
+  session_two: false
+  session_three: false
+  session_four: false
+  session_five: false
+  session_six: false
+  session_seven: false
+  session_eight: false
+
+two:
+  name: MyString
+  session: 1
+  sell: false
+  fsession_one: false
+  session_two: false
+  session_three: false
+  session_four: false
+  session_five: false
+  session_six: false
+  session_seven: false
+  session_eight: false

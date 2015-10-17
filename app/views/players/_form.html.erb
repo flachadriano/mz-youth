@@ -1,0 +1,61 @@
+<%= form_for(@player) do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :session %><br>
+    <%= f.number_field :session %>
+  </div>
+  <div class="field">
+    <%= f.label :sell %><br>
+    <%= f.check_box :sell %>
+  </div>
+  <div class="field">
+    <%= f.label :fsession_one %><br>
+    <%= f.check_box :fsession_one %>
+  </div>
+  <div class="field">
+    <%= f.label :session_two %><br>
+    <%= f.check_box :session_two %>
+  </div>
+  <div class="field">
+    <%= f.label :session_three %><br>
+    <%= f.check_box :session_three %>
+  </div>
+  <div class="field">
+    <%= f.label :session_four %><br>
+    <%= f.check_box :session_four %>
+  </div>
+  <div class="field">
+    <%= f.label :session_five %><br>
+    <%= f.check_box :session_five %>
+  </div>
+  <div class="field">
+    <%= f.label :session_six %><br>
+    <%= f.check_box :session_six %>
+  </div>
+  <div class="field">
+    <%= f.label :session_seven %><br>
+    <%= f.check_box :session_seven %>
+  </div>
+  <div class="field">
+    <%= f.label :session_eight %><br>
+    <%= f.check_box :session_eight %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
