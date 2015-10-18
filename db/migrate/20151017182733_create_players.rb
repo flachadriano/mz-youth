@@ -4,7 +4,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :name
       t.integer :session
       t.boolean :sell
-      t.boolean :fsession_one
+      t.boolean :session_one
       t.boolean :session_two
       t.boolean :session_three
       t.boolean :session_four
