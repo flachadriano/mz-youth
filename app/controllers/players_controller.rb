@@ -24,6 +24,7 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.json
   def create
+    player_params[:sell] = false
     @player = Player.new(player_params)
 
     respond_to do |format|
