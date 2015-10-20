@@ -1,8 +1,10 @@
+<div class="centered-panel">
 <p id="notice"><%= notice %></p>
 
 <h1>Players</h1>
+<h3><%= link_to 'New Player', new_player_path %></h3>
 
-<table>
+<table class="player-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,8 +23,47 @@
   </thead>
 
   <tbody>
+    <% age = 23 %>
+    <% session = System::SESSION - 23 %>
+
+    <tr class="under-age">
+      <td>U<%= age %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
     <% @players.each do |player| %>
-      <tr>
+      <% if player.session != session %>
+        <% age -= 1 %>
+        <% session += 1 %>
+        <tr class="under-age">
+          <td>U<%= age %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+
+      <tr class="player">
         <td><%= player.name %></td>
         <td><%= player.position.name %></td>
         <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
@@ -41,6 +82,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Player', new_player_path %>
+</div>
