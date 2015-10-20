@@ -19,6 +19,10 @@
     <%= f.label :session %><br>
     <%= f.number_field :session %>
   </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.select :position, @positions %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

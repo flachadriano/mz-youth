@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Position</th>
       <th>Sell</th>
       <th>T<%= System::SESSION %></th>
       <th>T<%= System::SESSION - 1 %></th>
@@ -23,6 +24,7 @@
     <% @players.each do |player| %>
       <tr>
         <td><%= player.name %></td>
+        <td><%= player.position.name %></td>
         <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
         <td><%= check_box_tag 'session_one', 1, player.session_one, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
         <td><%= check_box_tag 'session_two', 1, player.session_two, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
