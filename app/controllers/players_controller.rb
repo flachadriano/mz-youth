@@ -10,13 +10,11 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @positions = Position.all
   end
 
   # GET /players/new
   def new
     @player = Player.new
-    @positions = Position.all
   end
 
   # GET /players/1/edit
@@ -71,6 +69,8 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :session, :position, :sell, :fsession_one, :session_two, :session_three, :session_four, :session_five, :session_six, :session_seven, :session_eight)
+      params.require(:player).permit(:name, :session, :position_id, :sell,
+        :session_one, :session_two, :session_three, :session_four, :session_five,
+        :session_six, :session_seven, :session_eight)
     end
 end

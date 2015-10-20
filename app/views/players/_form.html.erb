@@ -20,8 +20,8 @@
     <%= f.number_field :session %>
   </div>
   <div class="field">
-    <%= f.label :position %><br>
-    <%= f.select :position, @positions %>
+    <%= f.label :position_id %><br>
+    <%= f.select :position_id, Position.all.map { |p| [p.name, p.id] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

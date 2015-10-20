@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019230100) do
+ActiveRecord::Schema.define(version: 20151020032038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,18 +19,18 @@ ActiveRecord::Schema.define(version: 20151019230100) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.integer  "session"
-    t.boolean  "sell"
-    t.boolean  "session_one"
-    t.boolean  "session_two"
-    t.boolean  "session_three"
-    t.boolean  "session_four"
-    t.boolean  "session_five"
-    t.boolean  "session_six"
-    t.boolean  "session_seven"
-    t.boolean  "session_eight"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "position_id",   null: false
+    t.boolean  "sell",          default: false
+    t.boolean  "session_one",   default: false
+    t.boolean  "session_two",   default: false
+    t.boolean  "session_three", default: false
+    t.boolean  "session_four",  default: false
+    t.boolean  "session_five",  default: false
+    t.boolean  "session_six",   default: false
+    t.boolean  "session_seven", default: false
+    t.boolean  "session_eight", default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "position_id",                   null: false
   end
 
   create_table "positions", force: :cascade do |t|
