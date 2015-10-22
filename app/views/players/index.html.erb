@@ -4,47 +4,44 @@
 <h1>Players</h1>
 <h3><%= link_to 'New Player', new_player_path %></h3>
 
-<table class="player-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>N</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Sell</th>
-      <th>T<%= System::SESSION %></th>
-      <th>T<%= System::SESSION - 1 %></th>
-      <th>T<%= System::SESSION - 2 %></th>
-      <th>T<%= System::SESSION - 3 %></th>
-      <th>T<%= System::SESSION - 4 %></th>
-      <th>T<%= System::SESSION - 5 %></th>
-      <th>T<%= System::SESSION - 6 %></th>
-      <th>T<%= System::SESSION - 7 %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<% number = 20 %>
+<% age = 23 %>
+<% session = System::SESSION - 23 %>
 
-  <tbody>
-    <% number = 20 %>
-    <% age = 23 %>
-    <% session = System::SESSION - 23 %>
+<% @players.each do |player| %>
+  <% if player.session != session %>
+    <% number += 10 %>
+    <% number -= (number % 10) %>
+    <% age -= 1 %>
+    <% session += 1 %>
+  <% end %>
 
-    <tr class="under-age">
-      <td colspan="15">U<%= age %></td>
-    </tr>
+  <table class="player-table">
+    <thead>
+      <tr class="under-age">
+        <th colspan="15">U<%= age %></th>
+      </tr>
 
-    <% @players.each do |player| %>
-      <% if player.session != session %>
-        <% number += 10 %>
-        <% number -= (number % 10) %>
-        <% age -= 1 %>
-        <% session += 1 %>
-        <tr class="under-age">
-          <td colspan="15">U<%= age %></td>
-        </tr>
-      <% end %>
+      <tr class="head">
+        <th></th>
+        <th>N</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Sell</th>
+        <th>T<%= System::SESSION %></th>
+        <th>T<%= System::SESSION - 1 %></th>
+        <th>T<%= System::SESSION - 2 %></th>
+        <th>T<%= System::SESSION - 3 %></th>
+        <th>T<%= System::SESSION - 4 %></th>
+        <th>T<%= System::SESSION - 5 %></th>
+        <th>T<%= System::SESSION - 6 %></th>
+        <th>T<%= System::SESSION - 7 %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-      <tr class="player">
+    <tbody>
+      <tr class="player<%=' sell' if player.sell%>" id="player-<%=player.id%>">
         <td><%= check_box_tag '' %></td>
         <td><%= number += 1 %></td>
         <td><%= player.name %></td>
@@ -61,8 +58,9 @@
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  <br/>
+<% end %>
 
 </div>

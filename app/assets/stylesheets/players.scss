@@ -1,16 +1,22 @@
 .player-table {
+  display: table;
+  margin: 0 auto;
   background-color: #FFF;
   border-spacing: 0px;
-}
-
-.player-table th {
-  background-color: #5E9FFF;
 }
 
 .player-table .under-age {
   background-color: #DCC000;
 }
 
+.player-table .head {
+  background-color: #5E9FFF;
+}
+
 .player-table .player {
   background-color: #DCDCDC;
+}
+
+.player-table .sell {
+  background-color: #FA7E7E;
 }
