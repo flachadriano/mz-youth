@@ -7,6 +7,8 @@
 <table class="player-table">
   <thead>
     <tr>
+      <th></th>
+      <th>N</th>
       <th>Name</th>
       <th>Position</th>
       <th>Sell</th>
@@ -18,52 +20,33 @@
       <th>T<%= System::SESSION - 5 %></th>
       <th>T<%= System::SESSION - 6 %></th>
       <th>T<%= System::SESSION - 7 %></th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% number = 20 %>
     <% age = 23 %>
     <% session = System::SESSION - 23 %>
 
     <tr class="under-age">
-      <td>U<%= age %></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td colspan="15">U<%= age %></td>
     </tr>
 
     <% @players.each do |player| %>
       <% if player.session != session %>
+        <% number += 10 %>
+        <% number -= (number % 10) %>
         <% age -= 1 %>
         <% session += 1 %>
         <tr class="under-age">
-          <td>U<%= age %></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td colspan="15">U<%= age %></td>
         </tr>
       <% end %>
 
       <tr class="player">
+        <td><%= check_box_tag '' %></td>
+        <td><%= number += 1 %></td>
         <td><%= player.name %></td>
         <td><%= player.position.name %></td>
         <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAtribChange(this, '#{player.id}')" %></td>

@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all.order(:session, :position_id)
+    @players = Player.all.order(:session, :position_id, :name)
   end
 
   # GET /players/1
