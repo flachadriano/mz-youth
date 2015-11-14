@@ -51,7 +51,7 @@
       <tbody>
   <% end %>
 
-  <% css_classes = '' %>
+  <% css_classes = 'player' %>
   <% css_classes << ' sell' if player.sell %>
   <% css_classes << ' tc' if player.session_one %>
   <tr class="<%= css_classes %>" id="player-<%=player.id%>">
