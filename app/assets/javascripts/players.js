@@ -3,12 +3,9 @@ function playerAtribChange(checkbox, playerId) {
 	data.player[checkbox.name] = checkbox.checked;
 
 	if (checkbox.name === 'sell') {
-		var el = document.getElementById('player-' + playerId);
-		if (checkbox.checked) {
-			el.className = el.className + ' sell';
-		} else {
-			el.className = el.className.replace(' sell', '');
-		}
+		updatePlayerClass(playerId, ' sell', checkbox.checked);
+	} else if (checkbox.name === 'session_one') {
+		updatePlayerClass(playerId, ' tc', checkbox.checked);
 	}
 
 	$.ajax({
@@ -17,4 +14,13 @@ function playerAtribChange(checkbox, playerId) {
 		url: "players/"+playerId+".json",
 		data: data
 	});
+}
+
+function updatePlayerClass(playerId, cssClass, checked) {
+	var el = document.getElementById('player-' + playerId);
+	if (checked) {
+		el.className = el.className + cssClass;
+	} else {
+		el.className = el.className.replace(cssClass, '');
+	}
 }

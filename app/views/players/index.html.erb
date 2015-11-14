@@ -51,7 +51,10 @@
       <tbody>
   <% end %>
 
-  <tr class="player<%=' sell' if player.sell%>" id="player-<%=player.id%>">
+  <% css_classes = '' %>
+  <% css_classes << ' sell' if player.sell %>
+  <% css_classes << ' tc' if player.session_one %>
+  <tr class="<%= css_classes %>" id="player-<%=player.id%>">
     <td><%= check_box_tag '' %></td>
     <td><%= number += 1 %></td>
     <td><%= player.name %></td>
