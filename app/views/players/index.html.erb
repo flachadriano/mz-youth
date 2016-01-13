@@ -9,6 +9,7 @@
 <% number = 10 %>
 <% age = 24 %>
 <% session = System::SESSION - 24 %>
+<% seasons = 10 %>
 
 <% @players.each do |player| %>
   <% if player.session != session %>
@@ -33,19 +34,20 @@
         </tr>
 
         <tr class="head">
+          <% seasons -= 1 %>
           <th></th>
           <th>N</th>
           <th>Name</th>
           <th>Position</th>
           <th>Sell</th>
-          <th>T<%= System::SESSION %></th>
-          <th>T<%= System::SESSION - 1 %></th>
-          <th>T<%= System::SESSION - 2 %></th>
-          <th>T<%= System::SESSION - 3 %></th>
-          <th>T<%= System::SESSION - 4 %></th>
-          <th>T<%= System::SESSION - 5 %></th>
-          <th>T<%= System::SESSION - 6 %></th>
-          <th>T<%= System::SESSION - 7 %></th>
+          <% if seasons > 0 %><th>T<%= System::SESSION %></th><% end %>
+          <% if seasons > 1 %><th>T<%= System::SESSION - 1 %></th><% end %>
+          <% if seasons > 2 %><th>T<%= System::SESSION - 2 %></th><% end %>
+          <% if seasons > 3 %><th>T<%= System::SESSION - 3 %></th><% end %>
+          <% if seasons > 4 %><th>T<%= System::SESSION - 4 %></th><% end %>
+          <% if seasons > 5 %><th>T<%= System::SESSION - 5 %></th><% end %>
+          <% if seasons > 6 %><th>T<%= System::SESSION - 6 %></th><% end %>
+          <% if seasons > 7 %><th>T<%= System::SESSION - 7 %></th><% end %>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -64,14 +66,14 @@
     <td><%= player.name %></td>
     <td><%= player.position.name %></td>
     <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_one', 1, player.session_one, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_two', 1, player.session_two, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_three', 1, player.session_three, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_four', 1, player.session_four, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_five', 1, player.session_five, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_six', 1, player.session_six, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_seven', 1, player.session_seven, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
-    <td><%= check_box_tag 'session_eight', 1, player.session_eight, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
+    <% if seasons > 0 %><td><%= check_box_tag 'session_one', 1, player.session_one, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 1 %><td><%= check_box_tag 'session_two', 1, player.session_two, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 2 %><td><%= check_box_tag 'session_three', 1, player.session_three, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 3 %><td><%= check_box_tag 'session_four', 1, player.session_four, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 4 %><td><%= check_box_tag 'session_five', 1, player.session_five, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 5 %><td><%= check_box_tag 'session_six', 1, player.session_six, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 6 %><td><%= check_box_tag 'session_seven', 1, player.session_seven, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+    <% if seasons > 7 %><td><%= check_box_tag 'session_eight', 1, player.session_eight, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
     <td><%= link_to 'Edit', edit_player_path(player) %></td>
     <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
