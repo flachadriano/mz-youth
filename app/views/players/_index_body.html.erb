@@ -1,0 +1,26 @@
+<% css_classes = 'player' %>
+<% if player.sell %>
+<%  css_classes << ' sell' %>
+<% else %>
+<%  css_classes << ' tc' if player.session_one %>
+<% end %>
+
+<% age = System::SESSION - player.session %>
+
+<tr class="<%= css_classes %>" id="player-<%=player.id%>">
+  <td><%= check_box_tag '' %></td>
+  <td><%= number %></td>
+  <td><%= player.name %></td>
+  <td><%= player.position.name %></td>
+  <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAtribChange(this, '#{player.id}')" %></td>
+  <% if age <= 23 %><td><%= check_box_tag 'session_one', 1, player.session_one, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 22 %><td><%= check_box_tag 'session_two', 1, player.session_two, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 21 %><td><%= check_box_tag 'session_three', 1, player.session_three, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 20 %><td><%= check_box_tag 'session_four', 1, player.session_four, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 19 %><td><%= check_box_tag 'session_five', 1, player.session_five, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 18 %><td><%= check_box_tag 'session_six', 1, player.session_six, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 17 %><td><%= check_box_tag 'session_seven', 1, player.session_seven, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <% if age <= 16 %><td><%= check_box_tag 'session_eight', 1, player.session_eight, onclick: "playerAtribChange(this, '#{player.id}')" %></td><% end %>
+  <td><%= link_to 'Edit', edit_player_path(player) %></td>
+  <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
