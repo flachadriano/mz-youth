@@ -11,14 +11,14 @@
     <th>Name</th>
     <th>Position</th>
     <th>Sell</th>
-    <% if age <= 23 %><th>T<%= System::SESSION %></th><% end %>
-    <% if age <= 22 %><th>T<%= System::SESSION - 1 %></th><% end %>
-    <% if age <= 21 %><th>T<%= System::SESSION - 2 %></th><% end %>
-    <% if age <= 20 %><th>T<%= System::SESSION - 3 %></th><% end %>
-    <% if age <= 19 %><th>T<%= System::SESSION - 4 %></th><% end %>
-    <% if age <= 18 %><th>T<%= System::SESSION - 5 %></th><% end %>
-    <% if age <= 17 %><th>T<%= System::SESSION - 6 %></th><% end %>
-    <% if age <= 16 %><th>T<%= System::SESSION - 7 %></th><% end %>
+    <% if age >= 16 %><th>T<%= System::SESSION %></th><% end %>
+    <% if age >= 17 %><th>T<%= System::SESSION - 1 %></th><% end %>
+    <% if age >= 18 %><th>T<%= System::SESSION - 2 %></th><% end %>
+    <% if age >= 19 %><th>T<%= System::SESSION - 3 %></th><% end %>
+    <% if age >= 20 %><th>T<%= System::SESSION - 4 %></th><% end %>
+    <% if age >= 21 %><th>T<%= System::SESSION - 5 %></th><% end %>
+    <% if age >= 22 %><th>T<%= System::SESSION - 6 %></th><% end %>
+    <% if age >= 23 %><th>T<%= System::SESSION - 7 %></th><% end %>
     <th colspan="2"></th>
   </tr>
 </thead>
