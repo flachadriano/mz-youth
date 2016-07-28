@@ -61,25 +61,6 @@ class PlayersController < ApplicationController
     end
   end
 
-  def seasonup
-    Player.all.each do |player|
-      player.update_attributes!(
-        session_one: false,
-        session_two: player.session_one,
-        session_three: player.session_two,
-        session_four: player.session_three,
-        session_five: player.session_four,
-        session_six: player.session_five,
-        session_seven: player.session_six,
-        session_eight: player.session_seven)
-    end
-
-    respond_to do |format|
-      format.html { redirect_to players_url, notice: 'Season was successfully upgraded.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
