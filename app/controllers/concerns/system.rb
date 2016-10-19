@@ -1,3 +1,3 @@
 class System
-	SESSION = 59
+	SESSION = 60
 end
