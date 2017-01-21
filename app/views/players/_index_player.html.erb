@@ -1,0 +1,25 @@
+<% css_classes = 'player' %>
+<% if player.sell %>
+<%  css_classes << ' sell' %>
+<% elsif player[System::SESSIONS_STR[player.mz_sessions()]] %>
+<%  css_classes << ' tc' %>
+<% end %>
+
+<tr class="<%= css_classes %>" id="player-<%=player.id%>">
+  <td><%= number %></td>
+  <td><%= player.name %></td>
+  <td><%= player.position.name %></td>
+  <td><%= check_box_tag 'sell', 1, player.sell, onclick: "playerAttribChange(this, '#{player.id}')" %></td>
+
+  <% session_age = System::JUNIOR_START_AGE %>
+  <% player_sessions = System::SESSIONS_STR[0..player.mz_sessions()].reverse() %>
+  <% player_sessions.each do |session| %>
+    <% if player.age >= session_age %>
+      <td><%= check_box_tag session, 1, player[session], onclick: "playerAttribChange(this, '#{player.id}')" %></td>
+    <% end %>
+    <% session_age += 1 %>
+  <% end %>
+
+  <td><%= link_to 'Edit', edit_player_path(player) %></td>
+  <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

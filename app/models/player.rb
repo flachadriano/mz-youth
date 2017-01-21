@@ -7,4 +7,15 @@ class Player < ActiveRecord::Base
   validates :sell, :session_one, :session_two, :session_three, :session_four,
             :session_five, :session_six, :session_seven, :session_eight,
             inclusion: [true, false]
+
+  def age
+    System::SESSION - self.session
+  end
+
+  # return how much sessions the player is on ManagerZone
+  # the player starts with 16, so if he has 17, he is one session on MZ
+  def mz_sessions
+    age - System::JUNIOR_START_AGE
+  end
+
 end

@@ -5,17 +5,16 @@
 <h3><%= link_to 'New Player', new_player_path %></h3>
 
 <% number = 10 %>
+
 <% @players.map(&:session).uniq.each do |session| %>
-  <% number += 10 %>
-  <% number -= number % 10 %>
+  <% number = number + 10 - (number % 10) %>
+
   <table class="player-table">
     <%= render template: 'players/_index_head', locals: {session: session} %>
 
     <tbody>
-      <% @players.each do |player| %>
-        <% if player.session == session %>
-          <%= render template: 'players/_index_body', locals: {player: player, number: number += 1} %>
-        <% end %>
+      <% @players.where(session: session).each do |player| %>
+        <%= render template: 'players/_index_player', locals: {player: player, number: number += 1} %>
       <% end %>
     </tbody>
   </table>

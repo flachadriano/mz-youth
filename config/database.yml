@@ -4,7 +4,7 @@ default: &default
   pool: 5
   # local
   username: 'postgres'
-  password: 123
+  password: 12314
   # could9
   # username: 'username'
   # password: 'password'

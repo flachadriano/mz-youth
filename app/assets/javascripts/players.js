@@ -1,4 +1,4 @@
-function playerAtribChange(checkbox, playerId) {
+function playerAttribChange(checkbox, playerId) {
   data = {
     player: {},
   };
