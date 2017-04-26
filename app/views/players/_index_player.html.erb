@@ -5,8 +5,6 @@
 <%  css_classes << ' tc' %>
 <% end %>
 
-<% number += 1 if !player.goalkeeper? && (number % 10) == 1 %>
-
 <tr class="<%= css_classes %>" id="player-<%=player.id%>">
   <td><%= number %></td>
   <td><%= player.name %></td>
