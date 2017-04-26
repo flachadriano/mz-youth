@@ -18,4 +18,8 @@ class Player < ActiveRecord::Base
     age - System::JUNIOR_START_AGE
   end
 
+  def goalkeeper?
+    self.position_id == Position.first.try(:id)
+  end
+
 end
