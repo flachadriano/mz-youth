@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :players
 
+  post "apis/users/sign_in", to: "application#api_login"
   root to: "players#index"
 end

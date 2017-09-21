@@ -1,9 +1,12 @@
 import React from 'react';
+import Player from './Player';
 
-export default class Team extends React.Component {
-    render() {
-        return (
-            <span>oi</span>
-        );
-    }
-}
+const Team = ({ players }) => (
+    <div>
+        {players.map(player => (
+            <Player key={player.id} {...player} />
+        ))}
+    </div>
+);
+
+export default Team;
