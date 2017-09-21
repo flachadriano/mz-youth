@@ -1,6 +1,7 @@
-export const getPlayers = auth_token => fetch('http://localhost:3000/players.json', {
+export const loadPlayers = authToken => fetch('http://localhost:3000/players.json', {
     headers: {
-        'Authorization': auth_token, 
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Authorization': authToken, 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
     }, 
 }).then(res => res.json())

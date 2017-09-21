@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Player from './Player';
-import * as service from '../services/Team';
+import * as service from '../reducers/Team';
 
 class Team extends React.Component {
     componentDidMount() {
-        let { getPlayers, auth_token } = this.props;
-        getPlayers(auth_token).then(response => console.log(response));
+        let { loadPlayers, authToken } = this.props;
+        loadPlayers(authToken);
     }
 
     render() {
@@ -19,11 +19,11 @@ class Team extends React.Component {
         </div>)
     }
 };
-console.log(service);
+
 Team = connect(
-    (state) => ({
+    state => ({
         players: state.players,
-        auth_token: state.auth_token
+        authToken: state.authToken
     }),
     { ...service }
 )(Team);

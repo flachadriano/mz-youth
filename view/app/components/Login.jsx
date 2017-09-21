@@ -4,12 +4,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../reducers/Login';
 
-let Login = ({ authenticate_user }) => {
+let Login = ({ authenticateUser }) => {
     const credentials = {};
 
     const onSubmit = (evt) => {
         evt.preventDefault();
-        authenticate_user(credentials);
+        authenticateUser(credentials);
     }
 
     const onChangeLogin = (evt) => {
