@@ -1,6 +1,6 @@
-export const getPlayers = () => fetch('players.json', {
+export const getPlayers = auth_token => fetch('http://localhost:3000/players.json', {
     headers: {
-        'Authorization': '1:123', 
+        'Authorization': auth_token, 
         'Content-Type': 'application/x-www-form-urlencoded'
     }, 
-}).then(res => resp.json())
+}).then(res => res.json())
