@@ -10,20 +10,19 @@ class Team extends React.Component {
     }
 
     render() {
-        let { players } = this.props;
-        players = players || [];
+        let { seasionPlayers } = this.props;
         return (<div>
-            {players.map(player => (
-                <Player key={player.id} {...player} />
-            ))}
+            {Object.keys(seasionPlayers).forEach((seasion) => {
+                <span>oi</span>
+            })}
         </div>)
     }
 };
 
 Team = connect(
     state => ({
-        players: state.players,
-        authToken: state.authToken
+        seasionPlayers: state.Team.bySeason || [],
+        authToken: state.Login.authToken
     }),
     { ...service }
 )(Team);

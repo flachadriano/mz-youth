@@ -3,7 +3,7 @@ import * as service from '../services/Login';
 // action types
 const USER_TOKEN = 'USER_TOKEN';
 
-// action executions
+// action executors
 export const authenticateUser = (credentials) => (dispatch) =>
     service.login(credentials).then(data => {
         if (data.auth_token) {

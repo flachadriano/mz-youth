@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import Team from './components/Team';
 import Login from './components/Login';
 
-let App = ({ authToken }) => {
-    if (authToken) {
-        return <Team />;
-    } else {
-        return <Login />;
+class App extends React.Component {
+    render() {
+        let { authToken } = this.props;
+        return authToken ? <Team /> : <Login />;
     }
 }
 
 App = connect(
-    state => ({authToken: state.authToken})
+    state => ({authToken: state.Login.authToken})
 )(App);
 
 export default App;

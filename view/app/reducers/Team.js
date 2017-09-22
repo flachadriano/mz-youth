@@ -4,9 +4,9 @@ import { combineReducers } from 'redux';
 // action types
 const PLAYERS_LOAD = 'PLAYERS_LOAD';
 
-// action executions
+// action executors
 export const loadPlayers = (authToken) => (dispatch) =>
-    service.loadPlayers(authToken).then(data => dispatch(data));
+    service.loadPlayers(authToken).then(data => dispatch(playersLoad(data)));
 
 // action creators
 const playersLoad = (players) => ({
@@ -14,7 +14,7 @@ const playersLoad = (players) => ({
     players
 });
 
-// reducer
+// reducers
 const bySeason = (state = {}, action) => {
     switch(action.type) {
         case PLAYERS_LOAD:

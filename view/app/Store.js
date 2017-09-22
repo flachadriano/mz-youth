@@ -12,4 +12,6 @@ thunk = make possible to an action receives as parameter the dispatch function (
 
 const reducers = combineReducers({Login, Team});
 
-export default createStore(reducers, applyMiddleware(promise, thunk));
+const store = createStore(reducers, applyMiddleware(promise, thunk));
+
+export default store;
