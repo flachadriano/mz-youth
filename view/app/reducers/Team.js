@@ -3,15 +3,24 @@ import { combineReducers } from 'redux';
 
 // action types
 const PLAYERS_LOAD = 'PLAYERS_LOAD';
+const SEASON_CURRENT = 'SEASON_CURRENT';
 
 // action executors
 export const loadPlayers = (authToken) => (dispatch) =>
     service.loadPlayers(authToken).then(data => dispatch(playersLoad(data)));
 
+export const seasonUpdate = (season) => (dispatch) =>
+    dispatch(updaSeason(season));
+
 // action creators
 const playersLoad = (players) => ({
     type: PLAYERS_LOAD,
     players
+});
+
+const updaSeason = (season) => ({
+    type: SEASON_CURRENT,
+    season
 });
 
 // reducers
@@ -41,4 +50,13 @@ const byId = (state = {}, action) => {
     }
 }
 
-export default combineReducers({ bySeason, byId });
+const data = (state = {}, action) => {
+    switch(action.type) {
+        case SEASON_CURRENT:
+            return { ...state, current_season: action.season };
+        default:
+            return state;
+    }
+}
+
+export default combineReducers({ bySeason, byId, data });

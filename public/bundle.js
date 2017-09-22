@@ -11624,7 +11624,7 @@ exports.default = LocalStorage;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.loadPlayers = undefined;
+exports.seasonUpdate = exports.loadPlayers = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -11638,6 +11638,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // action types
 var PLAYERS_LOAD = 'PLAYERS_LOAD';
+var SEASON_CURRENT = 'SEASON_CURRENT';
 
 // action executors
 var loadPlayers = exports.loadPlayers = function loadPlayers(authToken) {
@@ -11648,11 +11649,24 @@ var loadPlayers = exports.loadPlayers = function loadPlayers(authToken) {
     };
 };
 
+var seasonUpdate = exports.seasonUpdate = function seasonUpdate(season) {
+    return function (dispatch) {
+        return dispatch(updaSeason(season));
+    };
+};
+
 // action creators
 var playersLoad = function playersLoad(players) {
     return {
         type: PLAYERS_LOAD,
         players: players
+    };
+};
+
+var updaSeason = function updaSeason(season) {
+    return {
+        type: SEASON_CURRENT,
+        season: season
     };
 };
 
@@ -11690,7 +11704,19 @@ var byId = function byId() {
     }
 };
 
-exports.default = (0, _redux.combineReducers)({ bySeason: bySeason, byId: byId });
+var data = function data() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    switch (action.type) {
+        case SEASON_CURRENT:
+            return _extends({}, state, { current_season: action.season });
+        default:
+            return state;
+    }
+};
+
+exports.default = (0, _redux.combineReducers)({ bySeason: bySeason, byId: byId, data: data });
 
 /***/ }),
 /* 102 */
@@ -25895,7 +25921,11 @@ var _LocalStorage2 = _interopRequireDefault(_LocalStorage);
 
 var _Session = __webpack_require__(55);
 
-var session = _interopRequireWildcard(_Session);
+var sessionActions = _interopRequireWildcard(_Session);
+
+var _Team3 = __webpack_require__(101);
+
+var teamActions = _interopRequireWildcard(_Team3);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -25919,9 +25949,12 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var recoverUser = this.props.recoverUser;
+            var _props = this.props,
+                recoverUser = _props.recoverUser,
+                seasonUpdate = _props.seasonUpdate;
 
             recoverUser(new _LocalStorage2.default().getAuthToken());
+            seasonUpdate(63);
         }
     }, {
         key: 'render',
@@ -25938,7 +25971,7 @@ var App = function (_React$Component) {
 App = (0, _reactRedux.connect)(function (state) {
     return { authToken: state.Session.authToken };
 }, function (dispatch) {
-    return _extends({}, (0, _redux.bindActionCreators)(session, dispatch));
+    return _extends({}, (0, _redux.bindActionCreators)(sessionActions, dispatch), (0, _redux.bindActionCreators)(teamActions, dispatch));
 })(App);
 
 exports.default = App;
@@ -26007,11 +26040,17 @@ var Team = function (_React$Component) {
         value: function render() {
             var seasonPlayers = this.props.seasonPlayers;
 
+            var shirtNumber = 0;
             return _react2.default.createElement(
                 'div',
                 null,
                 Object.keys(seasonPlayers).map(function (season) {
-                    return _react2.default.createElement(_Season2.default, { key: season, playerIds: seasonPlayers[season] });
+                    shirtNumber += 10;
+                    return _react2.default.createElement(_Season2.default, { key: season,
+                        season: season,
+                        shirtNumber: shirtNumber,
+                        playerIds: seasonPlayers[season]
+                    });
                 })
             );
         }
@@ -26051,11 +26090,82 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Player = function Player(_ref) {
-    var name = _ref.name;
+    var shirtNumber = _ref.shirtNumber,
+        age = _ref.age,
+        name = _ref.name,
+        position_name = _ref.position_name,
+        sell = _ref.sell,
+        season_one = _ref.season_one,
+        season_two = _ref.season_two,
+        season_three = _ref.season_three,
+        season_four = _ref.season_four,
+        season_five = _ref.season_five,
+        season_six = _ref.season_six,
+        season_seven = _ref.season_seven,
+        season_eight = _ref.season_eight;
     return _react2.default.createElement(
-        'span',
-        null,
-        name
+        "div",
+        { className: "row" },
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            shirtNumber
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            name
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            position_name
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            _react2.default.createElement("input", { type: "checkbox", defaultChecked: sell })
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 16 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 17 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 18 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 19 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 20 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 21 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 22 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        ),
+        _react2.default.createElement(
+            "span",
+            { className: "col" },
+            age >= 23 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+        )
     );
 };
 
@@ -26165,21 +26275,103 @@ var _Player2 = _interopRequireDefault(_Player);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Season = function Season(_ref) {
-    var playerIds = _ref.playerIds,
-        players = _ref.players;
+    var season = _ref.season,
+        shirtNumber = _ref.shirtNumber,
+        playerIds = _ref.playerIds,
+        players = _ref.players,
+        current_season = _ref.current_season;
 
-    console.log(players);
+    // the age of a player in the current season
+    var playerAge = current_season - season;
+
     return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container' },
+        _react2.default.createElement(
+            'span',
+            null,
+            'Season ',
+            season
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                'N'
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                'Name'
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                'Position'
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                'Sell'
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 16 ? 'S' + current_season : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 17 ? 'S' + (current_season - 1) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 18 ? 'S' + (current_season - 2) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 19 ? 'S' + (current_season - 3) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 20 ? 'S' + (current_season - 4) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 21 ? 'S' + (current_season - 5) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 22 ? 'S' + (current_season - 6) : ''
+            ),
+            _react2.default.createElement(
+                'span',
+                { className: 'col' },
+                playerAge >= 23 ? 'S' + (current_season - 7) : ''
+            )
+        ),
         playerIds.map(function (playerId) {
-            return _react2.default.createElement(_Player2.default, _extends({ key: playerId }, players[playerId]));
+            shirtNumber++;
+            return _react2.default.createElement(_Player2.default, _extends({ key: playerId,
+                shirtNumber: shirtNumber,
+                age: playerAge
+            }, players[playerId]));
         })
     );
 };
 
 Season = (0, _reactRedux.connect)(function (state) {
-    return { players: state.Team.byId };
+    return {
+        players: state.Team.byId,
+        current_season: state.Team.data.current_season
+    };
 })(Season);
 
 exports.default = Season;

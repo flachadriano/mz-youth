@@ -12,10 +12,16 @@ class Team extends React.Component {
 
     render() {
         let { seasonPlayers } = this.props;
+        let shirtNumber = 0;
         return (<div>
-            {Object.keys(seasonPlayers).map((season) =>
-                <Season key={season} playerIds={seasonPlayers[season]} />
-            )}
+            {Object.keys(seasonPlayers).map((season) => {
+                shirtNumber += 10;
+                return <Season key={season}
+                    season={season}
+                    shirtNumber={shirtNumber}
+                    playerIds={seasonPlayers[season]}
+                />
+            })}
         </div>)
     }
 };

@@ -4,12 +4,14 @@ import { bindActionCreators } from 'redux';
 import Team from './components/Team';
 import Login from './components/Login';
 import LocalStorage from './LocalStorage';
-import * as session from './reducers/Session';
+import * as sessionActions from './reducers/Session';
+import * as teamActions from './reducers/Team';
 
 class App extends React.Component {
     componentDidMount() {
-        let { recoverUser } = this.props;
+        let { recoverUser, seasonUpdate } = this.props;
         recoverUser(new LocalStorage().getAuthToken());
+        seasonUpdate(63);
     }
 
     render() {
@@ -20,7 +22,10 @@ class App extends React.Component {
 
 App = connect(
     state => ({authToken: state.Session.authToken}),
-    dispatch => ({ ...bindActionCreators(session, dispatch) })
+    dispatch => ({
+        ...bindActionCreators(sessionActions, dispatch),
+        ...bindActionCreators(teamActions, dispatch)
+    })
 )(App);
 
 export default App;
