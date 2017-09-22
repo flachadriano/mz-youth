@@ -5,4 +5,4 @@ export const login = data => fetch('http://localhost:3000/apis/users/sign_in', {
         'Accept': 'application/json'
     },
     body: JSON.stringify(data)
-}).then(res => res.json())
+}).then(res => res.json());

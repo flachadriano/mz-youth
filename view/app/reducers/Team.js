@@ -18,12 +18,11 @@ const playersLoad = (players) => ({
 const bySeason = (state = {}, action) => {
     switch(action.type) {
         case PLAYERS_LOAD:
-            let newState = { ...state };
+            let newState = { ...state }
             action.players.forEach((player) => {
                 newState[player.season] = newState[player.season] || [];
                 newState[player.season].push(player.id);
             });
-            console.log(newState);
             return newState;
         default:
             return state;
@@ -34,11 +33,8 @@ const byId = (state = {}, action) => {
     switch(action.type) {
         case PLAYERS_LOAD:
             let newState = { ...state };
-            action.players.forEach((player) => {
-                newState[player.id] = newState[player.id] || [];
-                newState[player.id].push(player);
-            });
-            console.log(newState);
+            action.players.forEach((player) => 
+                newState[player.id] = player);
             return newState;
         default:
             return state;

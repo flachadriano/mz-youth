@@ -1,4 +1,5 @@
 import * as service from '../services/Session';
+import LocalStorage from '../LocalStorage';
 
 // action types
 const USER_TOKEN = 'USER_TOKEN';
@@ -8,8 +9,9 @@ export const authenticateUser = (credentials) => (dispatch) =>
     service.login(credentials).then(data => {
         if (data.auth_token) {
             dispatch(userToken(data.auth_token));
+            new LocalStorage().setAuthToken(data.auth_token);
         } else {
-            dispatch(userToken())
+            dispatch(userToken());
             // TODO threat message error response
         }
     });

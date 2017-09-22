@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922132216) do
+ActiveRecord::Schema.define(version: 20170922133246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
-    t.integer  "session"
+    t.integer  "season"
     t.boolean  "sell",         default: false
     t.boolean  "season_one",   default: false
     t.boolean  "season_two",   default: false

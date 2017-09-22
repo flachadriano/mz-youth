@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as actions from '../reducers/Session';
 
 let Login = ({ authenticateUser }) => {
@@ -10,15 +10,15 @@ let Login = ({ authenticateUser }) => {
     const onSubmit = (evt) => {
         evt.preventDefault();
         authenticateUser(credentials);
-    }
+    };
 
     const onChangeLogin = (evt) => {
         credentials.login = evt.target.value;
-    }
+    };
 
     const onChangePassword = (evt) => {
         credentials.password = evt.target.value;
-    }
+    };
 
     return (
         <form onSubmit={onSubmit}>

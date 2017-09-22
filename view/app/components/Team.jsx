@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Player from './Player';
+import { bindActionCreators } from 'redux';
+import Season from './Season';
 import * as service from '../reducers/Team';
 
 class Team extends React.Component {
@@ -10,21 +11,21 @@ class Team extends React.Component {
     }
 
     render() {
-        let { seasionPlayers } = this.props;
+        let { seasonPlayers } = this.props;
         return (<div>
-            {Object.keys(seasionPlayers).forEach((seasion) => {
-                <span>oi</span>
-            })}
+            {Object.keys(seasonPlayers).map((season) =>
+                <Season key={season} playerIds={seasonPlayers[season]} />
+            )}
         </div>)
     }
 };
 
 Team = connect(
     state => ({
-        seasionPlayers: state.Team.bySeason || [],
+        seasonPlayers: state.Team.bySeason || [],
         authToken: state.Session.authToken
     }),
-    { ...service }
+    dispatch => ({ ...bindActionCreators(service, dispatch) })
 )(Team);
 
 export default Team;

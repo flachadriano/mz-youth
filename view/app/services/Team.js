@@ -4,4 +4,4 @@ export const loadPlayers = authToken => fetch('http://localhost:3000/players.jso
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     }, 
-}).then(res => res.json())
+}).then(res => res.json());

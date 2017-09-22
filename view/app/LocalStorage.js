@@ -1,19 +1,22 @@
+const STORAGE_NAME = 'mz-youth-session';
+
 export default class LocalStorage {
-    constructor() {
+
+    setAuthToken(authToken) {
         if (typeof(Storage) !== 'undefined') {
-            this.authToken = localStorage.getItem('mz-youth-session');
+            localStorage.setItem(STORAGE_NAME, authToken);
         }
     }
 
-    setAuthToken(authToken) {
-        localStorage.setItem('mz-youth-session', authToken);
-    }
-
     getAuthToken() {
-        return this.authToken;
+        if (typeof(Storage) !== 'undefined') {
+            return localStorage.getItem(STORAGE_NAME);
+        }
     }
 
     destroy() {
-        localStorage.removeItem('mz-youth-session');
+        if (typeof(Storage) !== 'undefined') {
+            localStorage.removeItem(STORAGE_NAME);
+        }
     }
 }
