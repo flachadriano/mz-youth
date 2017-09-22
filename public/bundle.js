@@ -26105,66 +26105,70 @@ var Player = function Player(_ref) {
         season_eight = _ref.season_eight;
     return _react2.default.createElement(
         "div",
-        { className: "row" },
+        { className: "row player" },
         _react2.default.createElement(
             "span",
-            { className: "col" },
+            { className: "col-1" },
             shirtNumber
         ),
         _react2.default.createElement(
             "span",
-            { className: "col" },
+            { className: "col-3" },
             name
         ),
         _react2.default.createElement(
             "span",
-            { className: "col" },
+            { className: "col-2" },
             position_name
         ),
         _react2.default.createElement(
             "span",
-            { className: "col" },
+            { className: "col-1" },
             _react2.default.createElement("input", { type: "checkbox", defaultChecked: sell })
         ),
         _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 16 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 17 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 18 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 19 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 20 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 21 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 22 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
-        ),
-        _react2.default.createElement(
-            "span",
-            { className: "col" },
-            age >= 23 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            "div",
+            { className: "col-5 season-info-container" },
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 16 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 17 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 18 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 19 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 20 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 21 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 22 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "season-info" },
+                age >= 23 ? _react2.default.createElement("input", { type: "checkbox", defaultChecked: season_one }) : ''
+            )
         )
     );
 };
@@ -26286,7 +26290,7 @@ var Season = function Season(_ref) {
 
     return _react2.default.createElement(
         'div',
-        { className: 'container' },
+        { className: 'season container' },
         _react2.default.createElement(
             'span',
             null,
@@ -26295,66 +26299,102 @@ var Season = function Season(_ref) {
         ),
         _react2.default.createElement(
             'div',
-            { className: 'row' },
+            { className: 'row season-title' },
             _react2.default.createElement(
                 'span',
-                { className: 'col' },
+                { className: 'col-1' },
                 'N'
             ),
             _react2.default.createElement(
                 'span',
-                { className: 'col' },
+                { className: 'col-3' },
                 'Name'
             ),
             _react2.default.createElement(
                 'span',
-                { className: 'col' },
+                { className: 'col-2' },
                 'Position'
             ),
             _react2.default.createElement(
                 'span',
-                { className: 'col' },
+                { className: 'col-1' },
                 'Sell'
             ),
             _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 16 ? 'S' + current_season : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 17 ? 'S' + (current_season - 1) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 18 ? 'S' + (current_season - 2) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 19 ? 'S' + (current_season - 3) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 20 ? 'S' + (current_season - 4) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 21 ? 'S' + (current_season - 5) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 22 ? 'S' + (current_season - 6) : ''
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'col' },
-                playerAge >= 23 ? 'S' + (current_season - 7) : ''
+                'div',
+                { className: 'col-5 season-info-container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 16 ? 'S' + current_season : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 17 ? 'S' + (current_season - 1) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 18 ? 'S' + (current_season - 2) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 19 ? 'S' + (current_season - 3) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 20 ? 'S' + (current_season - 4) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 21 ? 'S' + (current_season - 5) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 22 ? 'S' + (current_season - 6) : ''
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'season-info' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        playerAge >= 23 ? 'S' + (current_season - 7) : ''
+                    )
+                )
             )
         ),
         playerIds.map(function (playerId) {

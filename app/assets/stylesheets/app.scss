@@ -1,26 +1,23 @@
-// .season {
-//     display: flex;
-//     flex-direction: column;
-//     max-width: 500px;
+.season {
+    background-color: #DCC000;
+    margin-top: 10px;
+    min-width: 640px;
+}
 
-//     .season-title {
-//         display: flex;
+.season-title {
+    background-color: #AAAAAA;
+}
 
-//         .season-player-name {
-//             flex-grow: 1;
-//         }
-//     }
+.season-info-container {
+    display: flex;
+}
 
-// }
+.season-info {
+    display: flex;
+    justify-content: center;
+    min-width: 30px;
+}
 
-// .player {
-//     display: flex;
-
-//     span {
-//         margin-right: 5px;
-//     }
-
-//     .player-name {
-//         flex-grow: 1;
-//     }
-// }
+.player {
+    background-color: #DCDCDC;
+}
