@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../reducers/Login';
+import * as actions from '../reducers/Session';
 
 let Login = ({ authenticateUser }) => {
     const credentials = {};

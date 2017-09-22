@@ -1,4 +1,4 @@
-import * as service from '../services/Login';
+import * as service from '../services/Session';
 
 // action types
 const USER_TOKEN = 'USER_TOKEN';
@@ -13,6 +13,9 @@ export const authenticateUser = (credentials) => (dispatch) =>
             // TODO threat message error response
         }
     });
+
+export const recoverUser = (authToken) => (dispatch) =>
+    dispatch(userToken(authToken));
 
 // action creators
 const userToken = (authToken) => ({

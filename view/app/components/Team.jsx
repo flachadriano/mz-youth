@@ -22,7 +22,7 @@ class Team extends React.Component {
 Team = connect(
     state => ({
         seasionPlayers: state.Team.bySeason || [],
-        authToken: state.Login.authToken
+        authToken: state.Session.authToken
     }),
     { ...service }
 )(Team);
