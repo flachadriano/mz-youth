@@ -1,5 +1,5 @@
 class System
-	SESSION = 62
+	SEASON = 62
 	JUNIOR_START_AGE = 16
-	SESSIONS_STR = ['session_one', 'session_two', 'session_three', 'session_four', 'session_five', 'session_six', 'session_seven', 'session_eight']
+	SEASONS_STR = ['season_one', 'season_two', 'season_three', 'season_four', 'season_five', 'season_six', 'season_seven', 'season_eight']
 end

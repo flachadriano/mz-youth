@@ -1,4 +1,4 @@
 json.array!(@players) do |player|
-  json.extract! player, :id, :name, :session, :position_id, :sell, :session_one, :session_two, :session_three, :session_four, :session_five, :session_six, :session_seven, :session_eight
+  json.extract! player, :id, :name, :season, :position_id, :sell, :season_one, :season_two, :season_three, :season_four, :season_five, :season_six, :season_seven, :season_eight
   json.url player_url(player, format: :json)
 end

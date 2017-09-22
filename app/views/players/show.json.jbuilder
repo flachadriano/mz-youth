@@ -1,1 +1,1 @@
-json.extract! @player, :id, :name, :session, :position_id, :sell, :session_one, :session_two, :session_three, :session_four, :session_five, :session_six, :session_seven, :session_eight, :created_at, :updated_at
+json.extract! @player, :id, :name, :season, :position_id, :sell, :season_one, :season_two, :season_three, :season_four, :season_five, :season_six, :season_seven, :season_eight, :created_at, :updated_at

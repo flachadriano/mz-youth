@@ -18,7 +18,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should create player" do
     assert_difference('Player.count') do
-      post :create, player: { fsession_one: @player.fsession_one, name: @player.name, sell: @player.sell, session: @player.session, session_eight: @player.session_eight, session_five: @player.session_five, session_four: @player.session_four, session_seven: @player.session_seven, session_six: @player.session_six, session_three: @player.session_three, session_two: @player.session_two }
+      post :create, player: { fseason_one: @player.fseason_one, name: @player.name, sell: @player.sell, season: @player.season, season_eight: @player.season_eight, season_five: @player.season_five, season_four: @player.season_four, season_seven: @player.season_seven, season_six: @player.season_six, season_three: @player.season_three, season_two: @player.season_two }
     end
 
     assert_redirected_to player_path(assigns(:player))
@@ -35,7 +35,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should update player" do
-    patch :update, id: @player, player: { fsession_one: @player.fsession_one, name: @player.name, sell: @player.sell, session: @player.session, session_eight: @player.session_eight, session_five: @player.session_five, session_four: @player.session_four, session_seven: @player.session_seven, session_six: @player.session_six, session_three: @player.session_three, session_two: @player.session_two }
+    patch :update, id: @player, player: { fseason_one: @player.fseason_one, name: @player.name, sell: @player.sell, season: @player.season, season_eight: @player.season_eight, season_five: @player.season_five, season_four: @player.season_four, season_seven: @player.season_seven, season_six: @player.season_six, season_three: @player.season_three, season_two: @player.season_two }
     assert_redirected_to player_path(assigns(:player))
   end
 

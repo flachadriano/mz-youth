@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all.order(:session, :position_id, :name)
+    @players = Player.all.order(:season, :position_id, :name)
   end
 
   # GET /players/1
@@ -69,8 +69,8 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :session, :position_id, :sell,
-        :session_one, :session_two, :session_three, :session_four, :session_five,
-        :session_six, :session_seven, :session_eight)
+      params.require(:player).permit(:name, :season, :position_id, :sell,
+        :season_one, :season_two, :season_three, :season_four, :season_five,
+        :season_six, :season_seven, :season_eight)
     end
 end

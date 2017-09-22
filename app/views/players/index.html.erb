@@ -6,14 +6,14 @@
 
 <% number = 10 %>
 
-<% @players.map(&:session).uniq.each do |session| %>
+<% @players.map(&:season).uniq.each do |season| %>
   <% number = number + 10 - (number % 10) %>
 
   <table class="player-table">
-    <%= render template: 'players/_index_head', locals: {session: session} %>
+    <%= render template: 'players/_index_head', locals: {season: season} %>
 
     <tbody>
-      <% @players.where(session: session).each do |player| %>
+      <% @players.where(season: season).each do |player| %>
         <% number += 1 if !player.goalkeeper? && (number % 10) == 0 %>
         <%= render template: 'players/_index_player', locals: {player: player, number: number += 1} %>
       <% end %>

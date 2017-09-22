@@ -6,7 +6,7 @@ function playerAttribChange(checkbox, playerId) {
 
   if (checkbox.name === 'sell') {
     updatePlayerClass(playerId, ' sell', checkbox.checked);
-  } else if (checkbox.name === 'session_one') {
+  } else if (checkbox.name === 'season_one') {
     updatePlayerClass(playerId, ' tc', checkbox.checked);
   }
 
