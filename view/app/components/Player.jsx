@@ -1,8 +1,17 @@
 import React from 'react';
 
-const Player = ({ shirtNumber, age, name, position_name, sell, season_one, season_two, season_three, 
-        season_four, season_five, season_six, season_seven, season_eight }) => (
-    <div className="row player">
+const PlayerInfo = ({}) => (<div className="season-info">
+        {age >= 16 ? <input type="checkbox" defaultChecked={season_one} /> : ''}
+</div>);
+
+const Player = ({ id, shirtNumber, age, name, position_name, sell, season_one, season_two, season_three, 
+        season_four, season_five, season_six, season_seven, season_eight }) => {
+
+    const onClick = () => {
+
+    }
+
+    return (<div className="row player">
         <span className="col-1">{shirtNumber}</span>
         <span className="col-3">{name}</span>
         <span className="col-2">{position_name}</span>
@@ -17,7 +26,7 @@ const Player = ({ shirtNumber, age, name, position_name, sell, season_one, seaso
             <div className="season-info">{age >= 22 ? <input type="checkbox" defaultChecked={season_one} /> : ''}</div>
             <div className="season-info">{age >= 23 ? <input type="checkbox" defaultChecked={season_one} /> : ''}</div>
         </div>
-    </div>
-)
+    </div>)
+}
 
 export default Player;

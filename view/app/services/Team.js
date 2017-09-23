@@ -1,4 +1,4 @@
-export const loadPlayers = authToken => fetch('http://localhost:3000/players.json', {
+export const loadPlayers = authToken => fetch(__API__+'players.json', {
     headers: {
         'Authorization': authToken, 
         'Content-Type': 'application/json',

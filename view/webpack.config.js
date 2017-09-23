@@ -1,6 +1,8 @@
 var path = require('path');
+var webpack = require('webpack');
 
 var APP_DIR = path.resolve(__dirname, 'app');
+var APP_URL = process.env.NODE_ENV == 'production' ? 'http://localhost:3000/' : 'https://mzyouth.herokuapp.com/';
 
 module.exports = {
     entry: APP_DIR+"/index.jsx",
@@ -19,5 +21,10 @@ module.exports = {
             loader : 'babel-loader'
           }
         ]
-      }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            __API__: APP_URL
+        })
+    ]
 };

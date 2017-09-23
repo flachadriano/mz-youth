@@ -5,8 +5,9 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -w",
     "build": "webpack",
-    "dev": "webpack -w"
+    "build:prod": "NODE_ENV=production npm run build"
   },
   "keywords": [
     "Manager",
