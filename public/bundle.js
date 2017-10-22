@@ -25847,19 +25847,14 @@ exports['default'] = thunk;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+exports.login = undefined;
+
+var _Request = __webpack_require__(244);
+
 var login = exports.login = function login(data) {
-    return fetch(http://localhost:3000/ + 'apis/users/sign_in', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(function (res) {
-        return res.json();
-    });
+  return (0, _Request.post)('/apis/users/sign_in', data);
 };
 
 /***/ }),
@@ -25870,18 +25865,14 @@ var login = exports.login = function login(data) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+exports.loadPlayers = undefined;
+
+var _Request = __webpack_require__(244);
+
 var loadPlayers = exports.loadPlayers = function loadPlayers(authToken) {
-    return fetch(http://localhost:3000/ + 'players.json', {
-        headers: {
-            'Authorization': authToken,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    }).then(function (res) {
-        return res.json();
-    });
+  return (0, _Request.get)('/players.json');
 };
 
 /***/ }),
@@ -26407,23 +26398,29 @@ var Login = function Login(_ref) {
     };
 
     return _react2.default.createElement(
-        'form',
-        { onSubmit: onSubmit },
+        'div',
+        { className: 'container d-flex flex-column', style: { paddingTop: '60px' } },
         _react2.default.createElement(
-            'span',
-            null,
-            'Login'
-        ),
-        _react2.default.createElement('input', { type: 'email', name: 'login', onChange: onChangeLogin }),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-            'span',
-            null,
-            'Senha'
-        ),
-        _react2.default.createElement('input', { type: 'password', name: 'password', onChange: onChangePassword }),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { type: 'submit', value: 'Logar' })
+            'form',
+            { className: 'align-self-center', style: { width: '300px' } },
+            _react2.default.createElement(
+                'span',
+                null,
+                'E-mail'
+            ),
+            _react2.default.createElement('input', { type: 'email', name: 'login', className: 'form-control' }),
+            _react2.default.createElement(
+                'span',
+                null,
+                'Senha'
+            ),
+            _react2.default.createElement('input', { type: 'password', name: 'password', className: 'form-control' }),
+            _react2.default.createElement(
+                'button',
+                { className: 'mt-2 btn btn-primary', style: { width: '100%' } },
+                'Acessar conta'
+            )
+        )
     );
 };
 
@@ -26432,6 +26429,47 @@ Login = (0, _reactRedux.connect)(undefined, function (dispatch) {
 })(Login);
 
 exports.default = Login;
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var BASE_URL = window.location.origin;
+
+var headers = function headers() {
+    return {
+        'Authorization': window.AUTH_TOKEN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    };
+};
+
+var handleResponse = function handleResponse(res) {
+    if (res.status == 422) return res.json().then(function (err) {
+        throw err;
+    });
+    return res.json();
+};
+
+var get = exports.get = function get(relativePath) {
+    return fetch(BASE_URL + relativePath, {
+        headers: headers()
+    }).then(handleResponse);
+};
+
+var post = exports.post = function post(relativePath, data) {
+    return fetch(BASE_URL + relativePath, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(data)
+    }).then(handleResponse);
+};
 
 /***/ })
 /******/ ]);

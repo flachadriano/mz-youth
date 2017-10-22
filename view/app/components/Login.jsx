@@ -20,15 +20,15 @@ let Login = ({ authenticateUser }) => {
         credentials.password = evt.target.value;
     };
 
-    return (
-        <form onSubmit={onSubmit}>
-            <span>Login</span>
-            <input type="email" name="login" onChange={onChangeLogin}/><br/>
-            <span>Senha</span>
-            <input type="password" name="password" onChange={onChangePassword}/><br/>
-            <input type="submit" value="Logar"/>
-        </form>
-    )
+    return (<div className="container d-flex flex-column" style={{paddingTop: '60px'}}>
+            <form className="align-self-center" style={{width: '300px'}}>
+                <span>E-mail</span>
+                <input type="email" name="login" className="form-control"/>
+                <span>Senha</span>
+                <input type="password" name="password"  className="form-control"/>
+                <button className="mt-2 btn btn-primary" style={{width: '100%'}} >Acessar conta</button>
+            </form>
+        </div>)
 }
 
 Login = connect(

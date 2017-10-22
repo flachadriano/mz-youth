@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var APP_DIR = path.resolve(__dirname, 'app');
-var APP_URL = process.env.NODE_ENV == 'production' ? 'http://localhost:3000/' : 'https://mzyouth.herokuapp.com/';
+var APP_URL = process.env.NODE_ENV == 'production' ? 'https://mzyouth.herokuapp.com/' : 'http://localhost:3000/';
 
 module.exports = {
     entry: APP_DIR+"/index.jsx",

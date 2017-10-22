@@ -10,7 +10,7 @@ promise = allows to dispatch actions inside a then call of a promise
 thunk = make possible to an action receives as parameter the dispatch function (Session)
 */
 
-const reducers = combineReducers({Session, Team});
+const reducers = combineReducers({ Session, Team });
 
 const store = createStore(reducers, applyMiddleware(promise, thunk));
 
